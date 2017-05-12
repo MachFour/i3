@@ -50,7 +50,7 @@ static char *argv0 = NULL;
 typedef struct {
     i3String *label;
     char *action;
-    uint8_t exec_in_terminal;
+    bool exec_in_terminal;
     int16_t x;
     uint16_t width;
 } button_t;
@@ -406,12 +406,12 @@ int main(int argc, char *argv[]) {
                 buttons[buttoncnt].label = i3string_from_utf8(optarg);
                 buttons[buttoncnt].action = argv[optind];
                 if (o == 'b') {
-                    buttons[buttoncnt].exec_in_terminal = 1;
+                    buttons[buttoncnt].exec_in_terminal = true;
                     printf("button with label *%s* and terminal action *%s*\n",
                            i3string_as_utf8(buttons[buttoncnt].label),
                            buttons[buttoncnt].action);
                 } else {
-                    buttons[buttoncnt].exec_in_terminal = 0;
+                    buttons[buttoncnt].exec_in_terminal = false;
                     printf("button with label *%s* and shell action *%s*\n",
                            i3string_as_utf8(buttons[buttoncnt].label),
                            buttons[buttoncnt].action);
